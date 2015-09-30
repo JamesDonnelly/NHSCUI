@@ -1,0 +1,250 @@
+<!doctype html>
+<html>
+  <head>
+    <title>NHSCUI Demo Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheet.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <header>
+            <h1>
+              <i class="fa fa-heartbeat"></i>
+              nhscui.js
+              <small>Documentation</small>
+            </h1>
+            <p class="lead">An accompanying JavaScript library for the <a href="http://systems.hscic.gov.uk/data/cui/uig">NHS Common User Interface</a> guidance documents, by James Donnelly.</p>
+            <p class="lead">
+              <small>
+                <i class="fa fa-github"></i>
+                View the source code <a href="https://github.com/JamesDonnelly/NHSCUI">here on GitHub</a> &mdash;
+                <i class="fa fa-twitter"></i>
+                Give me a prod <a href="https://twitter.com/inb4">on Twitter <small>(@inb4)</small></a>
+              </small>
+            </p>
+          </header>
+          
+          <hr>
+          
+          <div class="alert alert-warning">
+            <h4>
+              <i class="fa fa-warning"></i>
+              Under Development
+            </h4>
+            <p>This is a work in-progress and may be susceptible to changes and updates at any time without warning.</p>
+          </div>
+          
+          <hr>
+          
+          <article>
+            <h2>
+              <i class="fa fa-check"></i>
+              Getting Started
+            </h2>
+            
+            <p>Begin by downloading the minified nhscui.min.js file and including it in your application:</p>
+            
+            <p>  
+              <a class="btn btn-lg btn-primary" href="nhscui.min.js">
+                <i class="fa fa-download"></i>
+                Download the Minified NHSCUI Library
+              </a>
+              <a class="btn btn-lg btn-default" href="https://github.com/JamesDonnelly/NHSCUI/nhscui.js">
+                <i class="fa fa-github"></i>
+                View the Full Code
+              </a>
+            </p>
+            
+            <h3>
+              Dependencies
+            </h3>
+            <p>You'll also need to include <a href="http://momentjs.com">Moment.js</a> if you're going to be using date and time functionality.</p>
+          </article>
+          
+          <hr>
+          
+          <article>
+            <h2>
+              <i class="fa fa-calendar"></i>
+              Date Display
+              <small>(
+                <a href="http://systems.hscic.gov.uk/data/cui/uig/datedisplay.pdf">
+                  <i class="fa fa-file-pdf-o"></i>
+                  UIG
+                </a>
+              )</small>
+            </h2>
+            
+            <section>
+              <h4>Dependencies</h4>
+              <ul>
+                <li>
+                  <a href="http://momentjs.com/">Moment.js</a> &ndash; a fast and light-weight library used to parse dates.
+                </li>
+              </ul>
+            </section>
+            
+            <section>
+              <h3>
+                Short Date Display<br>
+                <code>nhscui.date.toShortDate( date [, showDay ] )</code>
+              </h3>
+            
+            <blockquote>
+              <p>The short date format presents dates in a concise, easily readable and unambiguous form. This is
+                achieved through inclusion of hyphen separators between day, month and year elements, and
+                presentation of the month value as an abbreviated word except in the case of May. It must be used
+                in all cases where the NHS application displays dates that affect patient treatment and identification.</p>
+            </blockquote>
+            
+              <table class="table table-bordered table-striped">
+                <tbody>
+                  <tr>
+                    <th>
+                      <code>nhscui.date.toShortDate( new Date() )</code>
+                    </th>
+                    <td data-bind="html: nhscui.date.toShortDate( new Date() )"></td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <code>nhscui.date.toShortDate( new Date(), true )</code>
+                    </th>
+                    <td data-bind="html: nhscui.date.toShortDate( new Date(), true )"></td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <code>nhscui.date.toShortDate( "not recorded" )</code>
+                    </th>
+                    <td data-bind="html: nhscui.date.toShortDate( 'not recorded' )"></td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <code>nhscui.date.toShortDate( null )</code>
+                    </th>
+                    <td data-bind="html: nhscui.date.toShortDate( null )"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+            
+            <section>
+              <h3>
+                Long Date Display<br>
+                <code>nhscui.date.toLongDate( date [, showDay ] [, showOrdinal ] )</code>
+              </h3>
+              
+              <blockquote>
+                <p>When communicating with patients and other non-clinical readers, such as in notification letters for
+                  patients, a non-technical date format is appropriate. The need to eliminate ambiguity and maximise
+                  readability, remains. Furthermore, there is a need to ensure that the date format is understood
+                  correctly by people from all over the world. Regional settings may be used where, for example, a
+                  local community follows a language other than English. The long date format meets these
+                  requirements and must therefore be used in all communications with non-clinical readers.</p>
+                <p>The ordinal form of the date, in the long date format, is the form in which dates are spoken, and is
+                  commonly used when writing letters. It is also a format which modern word-processor software
+                  supports, for example, by automatically superscripting a suffix (such as “rd”) upon typing. We have
+                  considered whether or not the four suffixes used with numbers to create the ordinal form, can be
+                  confused for units of medications.</p>
+              </blockquote>
+              
+              <table class="table table-bordered table-striped">
+                <tbody>
+                  <tr>
+                    <th>
+                      <code>nhscui.date.toLongDate( new Date() )</code>
+                    </th>
+                    <td data-bind="html: nhscui.date.toLongDate( new Date() )"></td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <code>nhscui.date.toLongDate( new Date(), true )</code>
+                    </th>
+                    <td data-bind="html: nhscui.date.toLongDate( new Date(), true )"></td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <code>nhscui.date.toLongDate( new Date(), false, true )</code>
+                    </th>
+                    <td data-bind="html: nhscui.date.toLongDate( new Date(), false, true )"></td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <code>nhscui.date.toLongDate( new Date(), true, true )</code>
+                    </th>
+                    <td data-bind="html: nhscui.date.toLongDate( new Date(), true, true )"></td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <code>nhscui.date.toLongDate( "not recorded" )</code>
+                    </th>
+                    <td data-bind="html: nhscui.date.toLongDate( 'not recorded' )"></td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <code>nhscui.date.toLongDate( null )</code>
+                    </th>
+                    <td data-bind="html: nhscui.date.toLongDate( null )"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+            <section>
+              <h3>Short <i class="fa fa-exchange"></i> Long Display</h3>
+              <p>As this uses Moment.js, we can also easily convert already-formatted short dates to long dates and vice versa.</p>
+              <table class="table table-bordered table-striped">
+                <tbody>
+                  <tr>
+                    <th>
+                      <code>nhscui.date.toShortDate( <span data-bind="text: nhscui.date.toLongDate( new Date() )"></span> )</code>
+                    </th>
+                    <td data-bind="text: nhscui.date.toShortDate(nhscui.date.toLongDate( new Date() ))"></td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <code>nhscui.date.toShortDate( <span data-bind="html: nhscui.date.toLongDate( new Date(), true, true )"></span>, true )</code>
+                    </th>
+                    <td data-bind="text: nhscui.date.toShortDate(nhscui.date.toLongDate( new Date(), true, true ), true)"></td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <code>nhscui.date.toLongDate( <span data-bind="text: nhscui.date.toShortDate( new Date() )"></span> )</code>
+                    </th>
+                    <td data-bind="text: nhscui.date.toLongDate(nhscui.date.toShortDate( new Date() ))"></td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <code>nhscui.date.toLongDate( <span data-bind="text: nhscui.date.toShortDate( new Date(), true )"></span>, true )</code>
+                    </th>
+                    <td data-bind="text: nhscui.date.toLongDate(nhscui.date.toShortDate( new Date(), true ), true)"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          </article>
+          
+          <!--<hr>
+          
+          <article>
+            <h2>
+              <i class="fa fa-clock-o"></i>
+              Time Display
+              <small>(
+                <a href="http://systems.hscic.gov.uk/data/cui/uig/timedisplay.pdf">
+                  <i class="fa fa-file-pdf-o"></i>
+                  UIG
+                </a>
+              )</small>
+            </h2>
+          </article>-->
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
+    <script src="dependencies/moment.min.js"></script>
+    <script src="nhscui.min.js"></script>
+    <script src="docs.js"></script>
+  </body>
+</html>

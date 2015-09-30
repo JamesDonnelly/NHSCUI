@@ -1,0 +1,15 @@
+body {
+  background: #EEE;
+}
+
+.container {
+  background: #FAFAFA;
+  border-color: #BDBDBD;
+  border-style: solid;
+  border-width: 0 1px;
+}
+
+hr {
+  border-color: #E0E0E0;
+  margin: 20px -15px;
+}
