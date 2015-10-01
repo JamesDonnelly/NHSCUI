@@ -1,6 +1,58 @@
 /* global moment */
 var nhscui = {};
 
+// Ensure the console doesn't throw errors if not defined.
+if (!console || typeof console != "object")
+  console = { info: function() { } };
+else if (!console.info)
+  console.info = function() { }
+
+/* Patient Name Display.
+ * Related documentation:
+ * -> Patient Name Display (http://systems.hscic.gov.uk/data/cui/uig/patnamedisp.pdf)
+ */
+
+/* Patient Name Display 2.1 - Patient Name Display.
+ * This function takes the title, forname and surname and returns it in NHS format
+ * (e.g. SMITH, John (Mr)).
+ */
+nhscui.toPatientName = function(title, forename, surname) {  
+  if (!forename || typeof forename != 'string') {
+    console.info("Patient forename(s) must be provided and must be in String format.");
+    console.info("http://systems.hscic.gov.uk/data/cui/uig/patnamedisp.pdf; section 2.1.");
+    
+    // Convert it to a string anyway, to circumvent errors.
+    forename = "–";
+  }
+  
+  if (!surname || typeof surname != 'string') {
+    console.info("Patient surname(s) must be provided and must be in String format.");
+    console.info("http://systems.hscic.gov.uk/data/cui/uig/patnamedisp.pdf; section 2.1.");
+    
+    // Convert it to a string anyway, to circumvent errors.
+    surname = "–";
+  }
+  
+  // Wrap the title in parenthesis.
+  // There's an open issue about this: https://github.com/JamesDonnelly/NHSCUI/issues/1
+  title = title ?  title : "Unspecified";
+  
+  // Convert the surname to uppercase.
+  surname = surname.toUpperCase();
+
+  return surname + ", " + forename + ' (' + title + ')';
+}
+
+/* Date and Time Display.
+ * Related documentation:
+ * -> Date Display (http://systems.hscic.gov.uk/data/cui/uig/datedisplay.pdf)
+ * -> Time Display (http://systems.hscic.gov.uk/data/cui/uig/timedisplay.pdf)
+ * -> Date and Time Display QIG (http://systems.hscic.gov.uk/data/cui/uig/datetimedispqig.pdf)
+ * 
+ * Dependencies:
+ * -> Moment.js (http://momentjs.com, https://github.com/moment/moment)
+ */
+
 /* Before we do anything else we need to configure Moment.js to conform to the NHS CUI
  * documentation. The locale needs to be English; weeks need to start on Monday; and date ordinals
  * need to be displayed in superscript.
@@ -18,16 +70,6 @@ moment.locale('en', {
       return n + '<sup>' + o + '</sup>'
     }
 });
-
-/* Date and Time Display.
- * Related documentation:
- * -> Date Display (http://systems.hscic.gov.uk/data/cui/uig/datedisplay.pdf)
- * -> Time Display (http://systems.hscic.gov.uk/data/cui/uig/timedisplay.pdf)
- * -> Date and Time Display QIG (http://systems.hscic.gov.uk/data/cui/uig/datetimedispqig.pdf)
- * 
- * Dependencies:
- * -> Moment.js (http://momentjs.com, https://github.com/moment/moment)
- */
 
 // Init the date wrapper.
 var date = {};

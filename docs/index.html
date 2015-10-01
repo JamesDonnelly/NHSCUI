@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="stylesheet.css">
+    <meta charset="utf-8">
   </head>
   <body>
     <div class="container">
@@ -68,6 +69,122 @@
           
           <article>
             <h2>
+              <i class="fa fa-user"></i>
+              Patient Name Display
+              <small>(
+                <a href="http://systems.hscic.gov.uk/data/cui/uig/patnamedisp.pdf">
+                  <i class="fa fa-file-pdf-o"></i>
+                  UIG
+                </a>
+              )</small>
+            </h2>
+            
+            <section>
+              <h3>
+                Patient Name Display
+                <code>nhscui.toPatientName( title, forename, surname )</code>
+              </h3>
+            
+              <blockquote>
+                <p>The recommended layout for Patient Name provides the best format because it lends itself to
+                  consistency and clarity, with a clear distinction between individual name elements. This increases
+                  patient safety by minimising the potential for reading error and providing accurate confirmation of
+                  the patient's identity.</p>
+              </blockquote>
+            
+              <table class="table table-bordered table-striped">
+                <tbody>
+                  <tr>
+                    <th>
+                      <code>nhscui.toPatientName( "Mr", "Brad", "Pitt" )</code>
+                    </th>
+                    <td data-bind="html: nhscui.toPatientName( 'Mr', 'George', 'Bluth Sr.' )"></td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <code>nhscui.toPatientName( "Ms", "Ellen", "Page" )</code>
+                    </th>
+                    <td data-bind="html: nhscui.toPatientName( 'Ms', 'Austero', 'Lucille' )"></td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <code>nhscui.toPatientName( "", "John", "Smith" )</code>
+                    </th>
+                    <td data-bind="html: nhscui.toPatientName( '', 'Tobias', 'Fünke' )"></td>
+                  </tr>
+                </tbody>
+              </table>
+              
+              <p>
+                As per the specification Family Names and Given Names and Titles must allow up to 35 characters in each.
+                This means that anything greater than 35 characters is cut off.
+              </p>
+            
+              <table class="table table-bordered table-striped">
+                <tbody>
+                  <tr>
+                    <th>
+                      <code>nhscui.toPatientName( "abcdefghijklmnopqrstuvwxyzABCDEFGHI", "Bob", "Loblaw" )</code>
+                    </th>
+                    <td data-bind="html: nhscui.toPatientName( 'abcdefghijklmnopqrstuvwxyzABCDEFGHI', 'Steve', 'Holt' )"></td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <code>nhscui.toPatientName( "Miss", "abcdefghijklmnopqrstuvwxyzABCDEFGHI", "Smith" )</code>
+                    </th>
+                    <td data-bind="html: nhscui.toPatientName( 'Miss', 'abcdefghijklmnopqrstuvwxyzABCDEFGHI', 'Sitwell' )"></td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <code>nhscui.toPatientName( "Dr", "John", "Smith" )</code>
+                    </th>
+                    <td data-bind="html: nhscui.toPatientName( 'Dr', 'Barry', 'abcdefghijklmnopqrstuvwxyzABCDEFGHI' )"></td>
+                  </tr>
+                </tbody>
+              </table>
+              
+              <p>
+                Although Family Names and Given Names are mandatory there may be occasions where these are missing.
+                In that case the <code>&ndash;</code> (&ndash) character is used in their place
+                (do note that a charset of utf-8 or equivalent is required to display these direct from JavaScript).
+              </p>
+            
+              <table class="table table-bordered table-striped">
+                <tbody>
+                  <tr>
+                    <th>
+                      <code>nhscui.toPatientName( "Miss", "", "Alley" )</code>
+                    </th>
+                    <td data-bind="html: nhscui.toPatientName( 'Miss', '', 'Alley' )"></td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <code>nhscui.toPatientName( "Lord", "Buster", "" )</code>
+                    </th>
+                    <td data-bind="html: nhscui.toPatientName( 'Lord', 'Buster', '' )"></td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <code>nhscui.toPatientName( "", "", "" )</code>
+                    </th>
+                    <td data-bind="html: nhscui.toPatientName( '', '', '' )"></td>
+                  </tr>
+                </tbody>
+              </table>
+            
+              <p>When missing names are detected an info message is sent to the browser's JavaScript console, similar to below:</p>
+              
+              <blockquote>
+                <i class="fa fa-info-circle"></i>
+                Patient forename(s) must be provided and must be in String format.
+              </blockquote>
+            </section>
+          </article>
+          
+          <hr>
+          
+          <article>
+            <h2>
               <i class="fa fa-calendar"></i>
               Date Display
               <small>(
@@ -93,12 +210,12 @@
                 <code>nhscui.date.toShortDate( date [, showDay ] )</code>
               </h3>
             
-            <blockquote>
-              <p>The short date format presents dates in a concise, easily readable and unambiguous form. This is
-                achieved through inclusion of hyphen separators between day, month and year elements, and
-                presentation of the month value as an abbreviated word except in the case of May. It must be used
-                in all cases where the NHS application displays dates that affect patient treatment and identification.</p>
-            </blockquote>
+              <blockquote>
+                <p>The short date format presents dates in a concise, easily readable and unambiguous form. This is
+                  achieved through inclusion of hyphen separators between day, month and year elements, and
+                  presentation of the month value as an abbreviated word except in the case of May. It must be used
+                  in all cases where the NHS application displays dates that affect patient treatment and identification.</p>
+              </blockquote>
             
               <table class="table table-bordered table-striped">
                 <tbody>
