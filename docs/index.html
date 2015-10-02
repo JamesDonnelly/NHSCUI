@@ -69,6 +69,122 @@
           
           <article>
             <h2>
+              <i class="fa fa-tag"></i>
+              NHS Number Display
+              <small>(
+                <a href="http://systems.hscic.gov.uk/data/cui/uig/inputdisplay.pdf">
+                  <i class="fa fa-file-pdf-o"></i>
+                  UIG
+                </a>
+              )</small>
+            </h2>
+            
+            <section>
+              <h3>NHS Number Display</h3>
+              
+              <blockquote>
+                <p>NHS Numbers will be read frequently by healthcare professionals and by patients, on computer
+                  monitors, as displayed by clinical applications, as well as on paper communications such as referral
+                  letters, appointment cards and test results. They must, therefore, be easy to read. As they are used
+                  to identify patients and match patient records, they must be displayed in full, to ensure these tasks
+                  are conducted accurately. The guidance for displaying the NHS Number takes these requirements
+                  into account.</p>
+              </blockquote>
+              
+              <table class="table table-bordered table-striped">
+                <tbody>
+                  <tr>
+                    <th>
+                      <code>nhscui.toNHSNumber( 9999999999 )</code>
+                    </th>
+                    <td data-bind="html: nhscui.toNHSNumber( 9999999999 )"></td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <code>nhscui.toNHSNumber( "999 999 9999" )</code>
+                    </th>
+                    <td data-bind="html: nhscui.toNHSNumber( '999 999 9999' )"></td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <code>nhscui.toNHSNumber( "99 99 99 99 99" )</code>
+                    </th>
+                    <td data-bind="html: nhscui.toNHSNumber( '99 99 99 99 99' )"></td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <code>nhscui.toNHSNumber( 9999999990 )</code>
+                    </th>
+                    <td data-bind="html: nhscui.toNHSNumber( 9999999990 )"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+            
+            <section>
+              <h3>
+                NHS Number Validation
+                <small>(
+                  <a href="http://www.datadictionary.nhs.uk/data_dictionary/attributes/n/nhs/nhs_number_de.asp">
+                    <i class="fa fa-file-archive-o"></i>
+                    Data Dictionary
+                  </a>  
+                )</small>
+              </h3>
+              
+              <div class="alert alert-info">
+                <i class="fa fa-info-circle"></i>
+                This is outside of the scope of the NHS Number Input and Display guidelines but as this is used in the NHS Number Display
+                functionality above it made sense to make this function available for public use.
+              </div>
+              
+              <table class="table table-bordered table-striped">
+                <tbody>
+                  <tr>
+                    <th>
+                      <code>nhscui.validNHSNumber( 9999999999 )</code>
+                    </th>
+                    <td data-bind="html: nhscui.validNHSNumber( 9999999999 )"></td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <code>nhscui.validNHSNumber( "999 999 9999" )</code>
+                    </th>
+                    <td data-bind="html: nhscui.validNHSNumber( '999 999 9999' )"></td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <code>nhscui.validNHSNumber( 9999999990 )</code>
+                    </th>
+                    <td data-bind="html: nhscui.validNHSNumber( 9999999990 )"></td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <code>nhscui.validNHSNumber( 9999999999999 )</code>
+                    </th>
+                    <td data-bind="html: nhscui.validNHSNumber( 9999999999999 )"></td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <code>nhscui.validNHSNumber( 999999 )</code>
+                    </th>
+                    <td data-bind="html: nhscui.validNHSNumber( 999999 )"></td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <code>nhscui.validNHSNumber( "invalid" )</code>
+                    </th>
+                    <td data-bind="html: nhscui.validNHSNumber( 'invalid' )"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          </article>
+          
+          <hr>
+          
+          <article>
+            <h2>
               <i class="fa fa-user"></i>
               Patient Name Display
               <small>(
