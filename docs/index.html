@@ -81,7 +81,7 @@
             
             <section>
               <h3>
-                Patient Name Display
+                Patient Name Display<br>
                 <code>nhscui.toPatientName( title, forename, surname )</code>
               </h3>
             
@@ -96,19 +96,19 @@
                 <tbody>
                   <tr>
                     <th>
-                      <code>nhscui.toPatientName( "Mr", "Brad", "Pitt" )</code>
+                      <code>nhscui.toPatientName( "Mr", "George", "Bluth Sr." )</code>
                     </th>
                     <td data-bind="html: nhscui.toPatientName( 'Mr', 'George', 'Bluth Sr.' )"></td>
                   </tr>
                   <tr>
                     <th>
-                      <code>nhscui.toPatientName( "Ms", "Ellen", "Page" )</code>
+                      <code>nhscui.toPatientName( "Ms", "Lucille", "Austero" )</code>
                     </th>
-                    <td data-bind="html: nhscui.toPatientName( 'Ms', 'Austero', 'Lucille' )"></td>
+                    <td data-bind="html: nhscui.toPatientName( 'Ms', 'Lucille', 'Austero' )"></td>
                   </tr>
                   <tr>
                     <th>
-                      <code>nhscui.toPatientName( "", "John", "Smith" )</code>
+                      <code>nhscui.toPatientName( "", "Tobias", "Fünke" )</code>
                     </th>
                     <td data-bind="html: nhscui.toPatientName( '', 'Tobias', 'Fünke' )"></td>
                   </tr>
@@ -126,17 +126,17 @@
                     <th>
                       <code>nhscui.toPatientName( "abcdefghijklmnopqrstuvwxyzABCDEFGHI", "Bob", "Loblaw" )</code>
                     </th>
-                    <td data-bind="html: nhscui.toPatientName( 'abcdefghijklmnopqrstuvwxyzABCDEFGHI', 'Steve', 'Holt' )"></td>
+                    <td data-bind="html: nhscui.toPatientName( 'abcdefghijklmnopqrstuvwxyzABCDEFGHI', 'Bob', 'Loblaw' )"></td>
                   </tr>
                   <tr>
                     <th>
-                      <code>nhscui.toPatientName( "Miss", "abcdefghijklmnopqrstuvwxyzABCDEFGHI", "Smith" )</code>
+                      <code>nhscui.toPatientName( "Miss", "abcdefghijklmnopqrstuvwxyzABCDEFGHI", "Sitwell" )</code>
                     </th>
                     <td data-bind="html: nhscui.toPatientName( 'Miss', 'abcdefghijklmnopqrstuvwxyzABCDEFGHI', 'Sitwell' )"></td>
                   </tr>
                   <tr>
                     <th>
-                      <code>nhscui.toPatientName( "Dr", "John", "Smith" )</code>
+                      <code>nhscui.toPatientName( "Dr", "Barry", "abcdefghijklmnopqrstuvwxyzABCDEFGHI" )</code>
                     </th>
                     <td data-bind="html: nhscui.toPatientName( 'Dr', 'Barry', 'abcdefghijklmnopqrstuvwxyzABCDEFGHI' )"></td>
                   </tr>
@@ -315,27 +315,33 @@
                 <tbody>
                   <tr>
                     <th>
-                      <code>nhscui.date.toShortDate( <span data-bind="text: nhscui.date.toLongDate( new Date() )"></span> )</code>
+                      <code>nhscui.date.toShortDate( "<span data-bind="text: nhscui.date.toLongDate( new Date() )"></span>" )</code>
                     </th>
                     <td data-bind="text: nhscui.date.toShortDate(nhscui.date.toLongDate( new Date() ))"></td>
                   </tr>
                   <tr>
                     <th>
-                      <code>nhscui.date.toShortDate( <span data-bind="html: nhscui.date.toLongDate( new Date(), true, true )"></span>, true )</code>
+                      <code>nhscui.date.toShortDate( "<span data-bind="html: nhscui.date.toLongDate( new Date(), true, true )"></span>", true )</code>
                     </th>
                     <td data-bind="text: nhscui.date.toShortDate(nhscui.date.toLongDate( new Date(), true, true ), true)"></td>
                   </tr>
                   <tr>
                     <th>
-                      <code>nhscui.date.toLongDate( <span data-bind="text: nhscui.date.toShortDate( new Date() )"></span> )</code>
+                      <code>nhscui.date.toLongDate( "<span data-bind="text: nhscui.date.toShortDate( new Date() )"></span>" )</code>
                     </th>
                     <td data-bind="text: nhscui.date.toLongDate(nhscui.date.toShortDate( new Date() ))"></td>
                   </tr>
                   <tr>
                     <th>
-                      <code>nhscui.date.toLongDate( <span data-bind="text: nhscui.date.toShortDate( new Date(), true )"></span>, true )</code>
+                      <code>nhscui.date.toLongDate( "<span data-bind="text: nhscui.date.toShortDate( new Date(), true )"></span>", true )</code>
                     </th>
                     <td data-bind="text: nhscui.date.toLongDate(nhscui.date.toShortDate( new Date(), true ), true)"></td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <code>nhscui.date.toLongDate( "<span data-bind="text: nhscui.date.toShortDate( new Date(), true )"></span>", true, true )</code>
+                    </th>
+                    <td data-bind="html: nhscui.date.toLongDate(nhscui.date.toShortDate( new Date(), true ), true, true )"></td>
                   </tr>
                 </tbody>
               </table>
