@@ -6,6 +6,56 @@ if (!console || typeof console != "object")
   console = { info: function() { } };
 else if (!console.info)
   console.info = function() { }
+  
+/* NHS Number Display.
+ * Related documentation:
+ * -> NHS Number Input and Display (http://systems.hscic.gov.uk/data/cui/uig/inputdisplay.pdf)
+ */
+
+/* NHS Number Display 2.1 - NHS Number Display.
+ * This function takes an NHS Number then validates and formats it.
+ */
+nhscui.toNHSNumber = function(nhsNumber) {
+  // Convert the nhsNumber to string and strip any non-numeric characters.
+  var s = (nhsNumber + '').replace(/\D/g, '');
+  
+  // Ensure NHS Number is valid.
+  if (!nhscui.validNHSNumber(s))
+    return "Invalid";
+    
+  return s.substr(0, 3) + ' ' + s.substr(3, 3) + ' ' + s.substr(6, 4);
+}
+
+/* NHS Number Validation.
+ * This function validates an NHS Number as described in
+ * http://www.datadictionary.nhs.uk/data_dictionary/attributes/n/nhs/nhs_number_de.asp
+ * 
+ * This is outside of the scope of the NHS Number Display specification, but is implemented here
+ * anyway to ensure the nhscui.toNHSNumber function above returns valid results. This function
+ * itself can also be called to validate when displaying isn't required.
+ */
+nhscui.validNHSNumber = function(nhsNumber) {
+  // Convert the nhsNumber to string.
+  nhsNumber = (nhsNumber + '').replace(/\D/g, '');
+  
+  // First check is length (it must be exactly 10 characters long) and whether it's numeric.
+  if (nhsNumber.length != 10 || isNaN(nhsNumber))
+    return false;
+  
+  // Perform Steps 1 and 2 of the NHS Number validation process linked above.
+  var factor = 0, remainder, checkDigit;
+  for (var i = 10; i > 1; i--)
+    factor += nhsNumber[10 - i] * i;
+    
+  // Step 3 - get the remainder from dividing the factor by 11.
+  remainder = factor % 11;
+  
+  // Step 4 - subtract the remainder from 11 to give the checkDigit.
+  checkDigit = 11 - remainder;
+  
+  // Step 5 - check whether checkDigit matches 10th digit of nhsNumber.
+  return checkDigit == nhsNumber[9];
+}
 
 /* Patient Name Display.
  * Related documentation:
