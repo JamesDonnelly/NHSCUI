@@ -20,7 +20,7 @@ nhscui.toNHSNumber = function(nhsNumber) {
   var s = (nhsNumber + '').replace(/\D/g, '');
   
   // Ensure NHS Number is valid.
-  if (!nhscui.validNHSNumber(s))
+  if (!nhscui.validateNHSNumber(s))
     return "Invalid";
     
   return s.substr(0, 3) + ' ' + s.substr(3, 3) + ' ' + s.substr(6, 4);
@@ -34,7 +34,7 @@ nhscui.toNHSNumber = function(nhsNumber) {
  * anyway to ensure the nhscui.toNHSNumber function above returns valid results. This function
  * itself can also be called to validate when displaying isn't required.
  */
-nhscui.validNHSNumber = function(nhsNumber) {
+nhscui.validateNHSNumber = function(nhsNumber) {
   // Convert the nhsNumber to string.
   nhsNumber = (nhsNumber + '').replace(/\D/g, '');
   
