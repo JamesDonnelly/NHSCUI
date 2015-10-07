@@ -153,7 +153,7 @@ date.toShortDate = function(date, showDay) {
     
   return validateDate(moment(date).format(
     (showDay ? 'ddd ' : '') + 
-    'DD MMM YYYY'
+    'DD-MMM-YYYY'
   ));
 }
 
